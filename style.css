@@ -1,0 +1,394 @@
+html {
+    background-color: black;
+    color: white;
+}
+
+body {
+    margin: 0;
+}
+
+#img_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 5vh 5vw 5vh 5vw;
+    width: 40vw;
+    height: 90vh;
+}
+
+#img_container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#info_container {
+    width: 45vw;
+    height: 80vh;
+    position: absolute;
+    top: 10vh;
+    left: 50vw;
+    border-left: 1px solid white;
+    padding-left: 2vw;
+}
+
+#zoom_img_container {
+    display: none;
+    position: absolute;
+    width: 45vw;
+    height: 70vh;
+    top: 10vh;
+    overflow: hidden;
+}
+
+#zoom_img {
+    position: relative;
+}
+
+#next_plant {
+    cursor: pointer;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px;
+    border: 0;
+}
+
+#guess {
+    outline: none;
+}
+
+#feedback.correct {
+    color: lightgreen;
+}
+#feedback.incorrect {
+    color: red;
+}
+
+#answers {
+    display: none;
+}
+
+#common_name {
+    font-size: 24px;
+}
+
+#scientific_name {
+    font-style: italic;
+}
+
+p#elpel_keywords {
+    margin-bottom: 0;
+}
+
+#more_info_link {
+    color: lightgreen;
+}
+
+#elpel_img {
+    cursor: zoom-in;
+    height: 50px;
+    display: block;
+    margin-top: 16px;
+}
+
+#elpel_zoom_img_container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: calc(100% - 2vw); /*Account for padding of info container counted in the 100%*/
+    background-color: black;
+    display: none;
+    cursor: zoom-out;
+}
+
+#elpel_zoom_img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+#img_credit {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    color: #666;
+    font-size: 12px;
+}
+
+#img_credit a {
+    color: #666;
+}
+
+
+
+
+#enter_settings {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 115px;
+    height: 70px;
+    cursor: pointer;
+}
+
+#enter_settings img {
+    position: absolute;
+    height: 50px;
+    margin: 10px;
+    right: 0;
+}
+
+#enter_settings p {
+    position: absolute;
+    right: 55px;
+    top: 13px;
+    text-align: right;
+    font-size: 12px;
+    color: gray;
+}
+
+#enter_settings:hover p{
+    color: white;
+    text-shadow: 1px 1px 3px white;
+}
+
+#settings {
+    position: absolute;
+    background-color: black;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    color: black;
+}
+
+#settings_panel {
+    background-size: cover;
+    background-image: url('paper.jpg');
+
+    position: absolute;
+    width: max(820px, 85vw);
+    height: 90vh;
+    margin: auto;
+    inset: 0 0 0 0; /* shorthand for top left right bottom*/
+
+    border: 5px solid sienna;
+    padding: 0 10px 10px 10px;
+    
+    display: grid;
+    grid-template-columns: 310px auto;
+    grid-template-rows: 50px auto auto;
+    grid-template-areas:
+        "header header"
+        "left right_header"
+        "left right_grid";
+    gap: 10px;
+}
+
+#settings_panel * {
+    position: initial;
+}
+
+#settings_header {
+    grid-area: header;
+    border-bottom: 2px solid peru;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+#settings_header img {
+    height: 50px;
+}
+
+#settings_header p {
+    font-size: 30px;
+    font-family: 'Shadows Into Light';
+    margin: 0;
+    text-align: center;
+}
+
+#settings_left {
+    grid-area: left;
+    border-right: 2px solid peru;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+}
+
+#settings_left p {
+    margin-top: 0;
+    font-size: 14px;
+}
+
+
+#fetch_button_flex {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+#loader {
+    transition: transform 0.5s;
+    transform: scale(0);
+}
+#loader.loading {
+    transform: scale(1);
+}
+#loader img {
+    height: 1rem;
+    animation: spin 1.5s infinite linear;
+    transition: transform 3s;
+    transform: scale(0);
+}
+@keyframes spin {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+}
+
+#exit_settings {
+    cursor: pointer;
+    border: none;
+    position: relative;
+    left: 10px;
+    top: -75px;
+    display: inline-block;
+}
+
+#exit_settings * {
+    position: absolute;
+}
+
+#exit_settings img {
+    width: 100px;
+}
+
+#exit_settings p {
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    line-height: 45px;
+    font-family: 'Shadows Into Light';
+}
+
+#flower2 {
+    height: 80px;
+    margin-top: 18px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+#family_choices_header {
+    grid-area: right_header;
+    margin-bottom: -10px; /* negate grid gap */
+    position: relative; /*because of absolutely positioned child*/
+}
+
+#family_choices_header p {
+    margin: 0;
+}
+
+.option_row {
+    display: flex;
+    gap: 0.5rem;
+    margin: 5px;
+}
+.option_row div {
+    padding: 5px;
+    font-size: 0.875rem;
+    border-radius: 5px;
+}
+#family_choices_header div.clickable:hover, #family_choices_header .selected {
+    background-color: purple;
+    color: beige;
+    cursor: pointer;
+}
+
+#family_image_credit_link {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+    color: peru;
+}
+
+#family_choices_grid {
+    grid-area: right_grid;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+    gap: 10px;
+    padding: 5px; /*so that the box shadows show up when hovering over choices*/
+}
+
+.family_choice {
+    border-radius: 10px;
+    border: 1px solid peru;
+    /*background-color: #ead0ae;*/
+    padding: 10px;
+    cursor: pointer;
+}
+
+.family_choice:hover {
+    box-shadow: 0 0 5px 3px gold;
+}
+
+.family_choice.selected {
+    background-color: purple;
+    color: beige;
+}
+
+.family_choice.faded { /*for the altkey going to elpel webpage thing*/
+    opacity: 0.1;
+}
+
+.family_choice img {
+    display: block;
+    margin: auto;
+    width: 75px;
+}
+
+.family_choice p {
+    text-align: center;
+    margin: 0;
+    font-size: 10px;
+}
+
+.family_choice span {
+    font-size: 14px;
+    text-align: center;
+}
+
+#family_image_credits {
+    width: 700px;
+    height: 450px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: none;
+    overflow: hidden;
+}
+
+#family_image_credits::backdrop {
+    background-color: #0008;
+}
+
+.exit_dialog {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#family_image_credits_title {
+    font-size: 20px;
+}
+
+#family_image_credits_list {
+    overflow-y: auto;
+    height: 415px;
+    margin-bottom: 0;
+}
